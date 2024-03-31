@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Terrance Nightingale's</h1>
+<h2>Restaurant Review Blog</h2>
+
+<!-- Gets posts, if any, and adds them to the page -->
+<!-- Also adds an Edit and Delete button for each post -->
+<% if (locals.posts) { %>
+    <% posts.forEach((post) => { %>
+    <div>
+        <h1>
+            <%= post.title %>
+        </h1>
+
+        <p> <%= post.body %> </p>
+
+        <form action="/edit-post" method="PUT">
+            <input type="text" name="editTitle" value="Title of Post">
+            <input type="text" name="editBody" value="Body of Post">
+            <button>Edit Post</button>
+        </form>
+
+        <form action="/delete-post" method="DELETE">
+            <input type="button" value="Delete Post">
+        </form>
+    </div>
+    <% })} %>
+
+<form action="/create-post" method="POST">
+    <input type="text" name="title" placeholder="Enter blog title here">
+    <input type="text" name="body" placeholder="Enter blog text here">
+    <button>Create Post</button>
+</form>
+
+<%- include("partials/footer.ejs") %>
