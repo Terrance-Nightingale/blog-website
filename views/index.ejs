@@ -10,10 +10,11 @@
     <div class="post">
         <h1 class="flex-item"><%= post.title %></h1>
         <p class="flex-item"><%= post.body %></p>
-        <form action="/edit-post" method="PUT">
+        <form action="/edit-post" method="POST">
+            <input type="hidden" name="id" value="<%= post.id  %>">
             <input class="flex-item" type="text" name="editTitle" value="Title of Post">
             <input class="flex-item" type="text" name="editBody" value="Body of Post">
-            <input class="flex-item" type="submit" name="postToEdit" value="Edit Post">
+            <input class="flex-item" type="submit" value="Edit Post">
         </form>
         <form action="/delete-post" method="POST">
             <input type="hidden" name="id" value="<%= post.id  %>">
@@ -25,7 +26,7 @@
 <form action="/create-post" method="POST">
     <input class="flex-item" type="text" name="title" placeholder="Enter blog title here">
     <input class="flex-item" type="text" name="body" placeholder="Enter blog text here">
-    <button class="flex-item">Create Post</button>
+    <button>Create Post</button>
 </form>
 
 <%- include("partials/footer.ejs") %>

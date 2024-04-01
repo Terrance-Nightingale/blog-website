@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 app.post("/create-post", (req, res) => {
     const newPost = {
-        id: posts.length + 1,
+        id: posts.length,
         title: req.body["title"],
         body: req.body["body"],
     }
@@ -23,20 +23,19 @@ app.post("/create-post", (req, res) => {
     res.redirect("/");
 });
 
-app.put("/edit-post", (req, res) => {
-    newTitle = req.body.editTitle;
-    newBody = req.body.editBody;
-    console.log(newTitle);
-    console.log(newBody);
+app.post("/edit-post", (req, res) => {
+    const newTitle = req.body.editTitle;
+    const newBody = req.body.editBody;
+    // posts['']
+
     // Add new post to posts. Pass posts as a variable for ejs to loop through.
     res.redirect("/");
 });
 
 app.post("/delete-post", (req, res) => {
-    const postToDelete = req.body.id;
-    console.log(postToDelete);
-    posts.pop(req.body['postToDelete']);
-    // Add new post to posts. Pass posts as a variable for ejs to loop through.
+    const postToDelete = parseInt(req.body.id);
+
+    posts.splice(posts.findIndex(post => post.id === postToDelete), 1);
     res.redirect("/");
 });
 
