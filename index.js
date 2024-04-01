@@ -24,11 +24,13 @@ app.post("/create-post", (req, res) => {
 });
 
 app.post("/edit-post", (req, res) => {
+    const postToEdit = parseInt(req.body.id);
     const newTitle = req.body.editTitle;
     const newBody = req.body.editBody;
-    // posts['']
 
-    // Add new post to posts. Pass posts as a variable for ejs to loop through.
+    posts[posts.findIndex(post => post.id === postToEdit)].title = newTitle;
+    posts[posts.findIndex(post => post.id === postToEdit)].body = newBody;
+
     res.redirect("/");
 });
 
