@@ -2,6 +2,12 @@ body {
     background-color: whitesmoke;
 }
 
-div {
+.post {
     display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.flex-item {
+    margin-right: 20px;
 }
